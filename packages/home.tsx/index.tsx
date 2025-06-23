@@ -19,7 +19,7 @@ export default function Home() {
       <section className="py-20 px-6 bg-gray-50">
         <h2 className="text-3xl font-semibold text-center mb-6">About Me</h2>
         <div className="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed text-center">
-          I’m a software engineer with 4.5+ years of experience in building scalable frontend and backend systems using
+          I’m a software engineer with 4.5+ years of experience in building scalable frontend and backend systems using Next.js,
           React, Node.js, MongoDB, and more. I enjoy learning, optimizing code, and building things that matter.
         </div>
       </section>
