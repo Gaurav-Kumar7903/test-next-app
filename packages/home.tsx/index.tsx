@@ -64,10 +64,9 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-10 bg-gray-100 text-center text-gray-600 text-sm">
-        Built by Gaurav Kumar •
-         {/* <a href="mailto:hello@gauravanization.in" className="underline">hello@gauravanization.in</a> */}
-      </footer>
+        <footer className="py-10 bg-gray-100 text-center text-gray-600 text-sm">
+        Built by <span className="font-medium text-gray-800">Gaurav</span> with <span className="text-red-500">❤️</span>
+        </footer>
     </main>
   );
 }
