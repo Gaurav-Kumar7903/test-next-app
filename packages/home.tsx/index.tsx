@@ -65,7 +65,7 @@ export default function Home() {
 
       {/* Footer */}
         <footer className="py-10 bg-gray-100 text-center text-gray-600 text-sm">
-        Built by <span className="font-medium text-gray-800">Gaurav</span> with <span className="text-red-500">❤️</span>
+        Built by <span className="font-medium text-gray-800">Gaurav</span> with <span className="text-red-500">❤️ from india.</span>
         </footer>
     </main>
   );
