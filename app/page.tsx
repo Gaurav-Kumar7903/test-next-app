@@ -1,4 +1,4 @@
-import Home from "@/packages/home.tsx";
+import Home from "@/packages/home";
 
 
 export default function Page() {
