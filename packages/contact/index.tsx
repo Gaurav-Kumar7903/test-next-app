@@ -9,6 +9,7 @@ const ContactMe = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -18,28 +19,43 @@ const ContactMe = () => {
     []
   );
 
-  const handleSubmit = useCallback(
-    async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      setSuccessMessage("");
-      setIsSubmitting(true);
+const handleSubmit = useCallback(
+  async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSuccessMessage("");
+    setIsSubmitting(true);
 
-      // Placeholder for future API integration
-      // Example:
-      // await fetch("/api/contact", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(formData),
-      // });
+    try { 
+        //toggle this for local and prod
+    //   const response = await fetch("http://localhost:4000/api/contact", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(formData),
+    //   });
 
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setSuccessMessage("Thanks! I’ll get back to you soon.");
-        setFormData({ name: "", email: "", message: "" });
-      }, 1000);
-    },
-    [formData]
-  );
+    const response = await fetch("https://portfolio-api.gauravanization.in/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Something went wrong.");
+      }
+
+      setSuccessMessage("Thanks! I’ll get back to you soon.");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      setErrorMessage("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  },
+  [formData]
+);
+
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 to-white px-4 py-20">
@@ -111,6 +127,11 @@ const ContactMe = () => {
           {successMessage && (
             <p className="text-green-600 text-center font-medium">
               {successMessage}
+            </p>
+          )}
+          {errorMessage && (
+            <p className="text-red-600 text-center font-medium">
+              {errorMessage}
             </p>
           )}
         </form>
