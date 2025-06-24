@@ -32,7 +32,7 @@ export default function Home() {
           <div className="border rounded-xl shadow hover:shadow-lg transition p-6">
             <h3 className="text-xl font-semibold mb-2">E-Commerce Platform</h3>
             <p className="text-gray-600 mb-4">
-              Full-stack app with React, Node.js, MongoDB, and integrated payment using Juspay.
+              Full-stack app with React, Node.js, MongoDB, SQL and integrated payment using Juspay.
             </p>
             <a href="#" className="text-blue-600 hover:underline">
               View project →
